@@ -1,0 +1,21 @@
+IGS-Schedule/node_modules
+__pycache__/
+.expo/
+
+IGS-Schedule/node_modules/
+IGS-Schedule/.expo/
+IGS-Schedule/dist/
+IGS-Schedule/npm-debug.*
+IGS-Schedule/*.jks
+IGS-Schedule/*.p8
+IGS-Schedule/*.p12
+IGS-Schedule/*.key
+IGS-Schedule/*.mobileprovision
+IGS-Schedule/*.orig.*
+IGS-Schedule/web-build/
+
+# macOS
+IGS-Schedule/.DS_Store
+
+# Temporary files created by Metro to check the health of the file watcher
+IGS-Schedule/.metro-health-check*
