@@ -1,5 +1,5 @@
-import { Text, View, StyleSheet, FlatList } from "react-native";
-import { useEffect, useState } from "react";
+import { View, FlatList } from "react-native";
+import { useEffect, useState, useRef } from "react";
 import { Day } from "../components/Day";
 import { APIservice } from "../services/APIservice";
 
@@ -13,10 +13,11 @@ export default function HomePage() {
   useEffect(() => {
     APIservice.getWeek(date).then((data) => {
       setTeachings(data);
-      const tab = new Array(data.length).fill(false);
-      setOpenedTab(tab);
+      setOpenedTab(new Array(data.length).fill(false));
     });
   }, []);
+
+  const ref = useRef(null);
 
   const openItem = (id) => {
     const tab = openedTab;
@@ -29,11 +30,15 @@ export default function HomePage() {
         tab[i] = false;
       }
     }
+
+    tab[id] == true ? ref.current.scrollToIndex({ animated: true, index: id }) : null;
     // now re render the flatlist
     setOpenedTab([...tab]);
   };
 
   return (
-    <View>{openedTab && <FlatList data={teachings} renderItem={({ item, index }) => <Day teachings={item} id={index} opened={openedTab[index]} handleOpen={openItem} />} />}</View>
+    <View>
+      {openedTab && <FlatList ref={ref} data={teachings} renderItem={({ item, index }) => <Day teachings={item} id={index} opened={openedTab[index]} handleOpen={openItem} />} />}
+    </View>
   );
 }

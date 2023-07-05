@@ -18,10 +18,16 @@
 # Session 3:
 
 - [x] Structuration du projet front 3/5
-- [x] Création du composant affichant la date, ainsi que le composant affichant les cours 2/5
+- [x] Création du composant affichant le jour, ainsi que le composant affichant les cours associés 2/5
 - [x] Gestion des flux de données entre les composants 3/5
 - [x] Paramétrage de l'animation de transition du composant affichant la date 5/5
 
 # Session 4:
 
-- [x] Mise en forme du composant affichant les cours
+- [x] Création du projet git 2/5
+- [x] Travail de recherche sur la charte graphique 3/5
+- [x] Mise en place de la police d'écriture 4/5
+
+# Session 5:
+
+- [x] Mise en forme du composant affichant le jour 2/5

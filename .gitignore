@@ -19,3 +19,4 @@ IGS-Schedule/.DS_Store
 
 # Temporary files created by Metro to check the health of the file watcher
 IGS-Schedule/.metro-health-check*
+node_modules
