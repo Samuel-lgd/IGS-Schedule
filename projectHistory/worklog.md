@@ -30,4 +30,19 @@
 
 # Session 5:
 
-- [x] Mise en forme du composant affichant le jour 2/5
+- [x] design du composant affichant le jour 2/5
+
+# Session 6:
+
+- [x] Travail sur les couleurs, a quel moment les utiliser 3/5
+- [x] design du composant affichant les cours 3/5
+
+# Session 7:
+
+- [x] retravail du design du composant affichant les jours 3/5
+- [x] finalisation des couleurs et de l'interface des cartes jours / cours 2/5
+
+# Session 8:
+
+- [x] Création d'un composant pour sélectionner la date 5/5 Difficultés: optimisation, gestion des formats de date, compréhension de flatlist
+- [x] Implémentation d'un indicateurs de chargement pour les composants de jours : 2/5

@@ -1,30 +1,53 @@
 import { StyleSheet } from "react-native";
 
 const colors = {
-  // background: "linear-gradient(50deg, rgb(85, 63, 181) 0%, rgb(56, 72, 161) 100%)",
-  background: "rgb(56, 72, 161)",
-  primary: "#3F51B5",
-  secondary: "#FF4081",
   white: "#FFFFFF",
-  grey: "#F5F5F5",
-  whiteOpacity80: "rgba(255, 255, 255, 0.7)",
-  whiteOpacity90: "rgba(255, 255, 255, 0.8)",
   black: "#000000",
   blackOpacity20: "rgba(0, 0, 0, 0.6)",
   HeaderText: "#343a82",
   text: "#4b4364",
   textOpacity: "#3a354a99",
+  eventColors: [
+    "rgb(255, 99, 132)",
+    "rgb(54, 162, 235)",
+    "rgb(237, 213, 116)",
+    "rgb(75, 192, 192)",
+    "rgb(255, 159, 64)",
+    "rgb(153, 102, 255)",
+    "rgb(240, 128, 128)", // Nouvelle couleur
+    "rgb(135, 206, 235)", // Nouvelle couleur
+    "rgb(255, 215, 0)", // Nouvelle couleur
+    "rgb(109, 209, 128)",
+  ],
+  eventColorsLight: [
+    "rgba(255, 99, 132, 0.4)",
+    "rgba(54, 162, 235, 0.4)",
+    "rgba(237, 213, 116, 0.4)",
+    "rgba(75, 192, 192, 0.4)",
+    "rgba(255, 159, 64, 0.4)",
+    "rgba(153, 102, 255, 0.4)",
+    "rgba(240, 128, 128, 0.4)", // Nouvelle couleur
+    "rgba(135, 206, 235, 0.4)", // Nouvelle couleur
+    "rgba(255, 215, 0, 0.4)", // Nouvelle couleur
+    "rgba(109, 209, 128, 0.4)",
+  ],
 };
 
 const texts = {
   title: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: "PoppinsBold",
     color: colors.HeaderText,
   },
 
+  subtitle: {
+    fontSize: 15,
+    fontFamily: "PoppinsBold",
+    color: colors.text,
+  },
+
   p: {
-    fontSize: 12,
+    fontSize: 13,
     fontFamily: "Poppins",
     color: colors.text,
   },
@@ -36,7 +59,7 @@ const layout = {
   margin: 10,
   borderRadius: 20,
   bordelSmallRadius: 7,
-  cardHeight: 150,
+  cardHeight: 145,
 };
 
 const heights = {
@@ -67,6 +90,12 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  absolute: {
+    position: "absolute",
+    top: 0,
+    left: 0,
   },
 });
 

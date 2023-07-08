@@ -27,7 +27,6 @@ export default function App() {
   return (
     <View onLayout={onLayoutRootView} style={{ paddingTop: StatusBar.currentHeight, flex: 1 }}>
       <StatusBar translucent={true} backgroundColor="#ffffff00" barStyle="light-content" />
-      <Text style={[GS.texts.title, { fontFamily: "Poppins" }]}>Whereas recognition of the inherent dignity</Text>
       <HomePage />
       <ImageBackground source={require("./assets/background.png")} resizeMode="cover" style={styles.backgroud} />
     </View>
