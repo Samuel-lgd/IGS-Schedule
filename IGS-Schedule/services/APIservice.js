@@ -7,14 +7,14 @@ const USER = "samuel.lagarde";
 
 const endpoints = {
   currentWeek: "/schedule/current-week?user=" + USER,
-  currentWeekDev: "/schedule/current-week/data",
+  currentWeekDev: "/schedule/current-week/week",
 };
 
 async function getWeek(date) {
   // const endpoint = API_URL + endpoints.currentWeek + "&date=" + date;
   const endpoint = API_URL + endpoints.currentWeekDev;
 
-  console.debug("APIservice.getWeek() called @ " + endpoint);
+  console.debug("APIservice.getWeek() called @ " + endpoint + " with date: " + date);
 
   try {
     const response = await fetch(endpoint);

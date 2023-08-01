@@ -1,19 +1,44 @@
 import React from "react";
 import { Text, View, StyleSheet, TouchableWithoutFeedback, Animated, Easing } from "react-native";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import GS from "../styles/globalStyles";
 import { Entypo } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-export const LoadingDay = () => {
-  const data = ["Loading... ", "Loading..."];
+export const LoadingDay = ({ handlePress }) => {
+  const textOpacity = useRef(new Animated.Value(1)).current;
+
+  useEffect(() => {
+    // Animation du texte "Loading..."
+    const textAnimation = Animated.loop(
+      Animated.sequence([
+        Animated.timing(textOpacity, {
+          toValue: 0.5,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(textOpacity, {
+          toValue: 1,
+          duration: 500,
+          useNativeDriver: true,
+        }),
+      ])
+    );
+
+    textAnimation.start();
+
+    return () => {
+      textAnimation.stop();
+    };
+  }, []);
+
   return (
-    <View style={{ padding: GS.layout.contentPadding, marginBottom: 16 }}>
+    <View style={{ padding: GS.layout.contentPadding, marginBottom: 20 }}>
       <View style={[style.cardDay, GS.styles.shadow]}>
         {/* Card Name */}
         <View style={[GS.styles.spaceBetween, { flexDirection: "row", marginBottom: 5 }]}>
-          <Text style={GS.texts.title}>Loading...</Text>
+          <Animated.Text style={[GS.texts.title, { opacity: textOpacity }]}>Loading...</Animated.Text>
           <View style={[GS.styles.shadow, style.button]}>
             <Entypo name="chevron-down" size={24} color={GS.colors.blackOpacity20} />
           </View>
@@ -21,7 +46,7 @@ export const LoadingDay = () => {
         {/* Card Content */}
         <View style={{ flex: 1, display: "flex", flexDirection: "row", gap: 10 }}>
           <View style={{ display: "flex", justifyContent: "center", gap: 5, justifyContent: "flex-end" }}>
-            {data.map((d, i) => (
+            {[0, 1].map((i) => (
               <View
                 style={[
                   {
@@ -36,14 +61,9 @@ export const LoadingDay = () => {
                 ]}
                 key={i}
               >
-                <View style={[{ display: "flex", flexDirection: "row", alignItems: "center", width: "100%", height: 30 }]}>
-                  {/* Barre colorée  */}
-                  <View style={[style.bar, { backgroundColor: GS.colors.eventColors[i] }]}></View>
-                  <Text key={i} numberOfLines={1} style={[GS.texts.p, { width: "100%", padding: 5 }]}>
-                    {d}
-                  </Text>
-                </View>
-                {/* <Text style={[GS.texts.p, { color: GS.colors.textOpacity }]}>{teaching.classroom}</Text> */}
+                <Text key={i} numberOfLines={1} style={[GS.texts.p, { width: "100%", padding: 5 }]}>
+                  ...
+                </Text>
               </View>
             ))}
           </View>
@@ -53,8 +73,9 @@ export const LoadingDay = () => {
   );
 };
 
-export const Day = ({ teachings, id, opened, handleOpen }) => {
+export const Day = ({ teachings, scrollToIndex, id }) => {
   // Get the date of the day
+  const [opened, setOpened] = useState(false);
   const date = Object.keys(teachings)[0];
   const dayTeachings = teachings[date];
   const todayDate = new Date().toLocaleDateString("fr-FR");
@@ -90,6 +111,13 @@ export const Day = ({ teachings, id, opened, handleOpen }) => {
   const teachingRadius = 10;
 
   const onPress = () => {
+    setOpened((prev) => !prev);
+    if (!opened) {
+      scrollToIndex(id);
+    }
+  };
+
+  const onPressIn = () => {
     Animated.timing(zoom, {
       toValue: zoomDepth,
       duration: zoomDuration,
@@ -146,7 +174,7 @@ export const Day = ({ teachings, id, opened, handleOpen }) => {
 
   return (
     <Animated.View style={{ transform: [{ scale: zoom }], padding: GS.layout.contentPadding, height: height }}>
-      <TouchableWithoutFeedback onPressIn={() => onPress()} onPressOut={() => onPressOut()} onPress={() => handleOpen(id)}>
+      <TouchableWithoutFeedback onPressIn={() => onPressIn()} onPressOut={() => onPressOut()} onPress={() => onPress()}>
         <View style={[style.cardDay, GS.styles.shadow]}>
           {/* Card Name */}
           <View style={[GS.styles.spaceBetween, { flexDirection: "row", marginBottom: 5 }]}>

@@ -5,6 +5,7 @@ const colors = {
   black: "#000000",
   blackOpacity20: "rgba(0, 0, 0, 0.6)",
   HeaderText: "#343a82",
+  HeaderText20: "rgba(52, 58, 130, 0.2)",
   text: "#4b4364",
   textOpacity: "#3a354a99",
   eventColors: [
